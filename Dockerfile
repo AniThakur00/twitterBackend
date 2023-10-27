@@ -16,4 +16,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 7010
+
 CMD [ "node", "app.js" ]

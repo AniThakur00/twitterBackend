@@ -1,25 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app.kubernetes.io/name: cicd-demo
-    app.kubernetes.io/instance: cicd-demo-instance
-    app.kubernetes.io/version: '1.0.0'
-    app.kubernetes.io/managed-by: kubectl
-  name: cicd-demo-deployment
+  name: project-one-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: cicd-demo
+      app: project-one
   template:
     metadata:
       labels:
-        app: cicd-demo
+        app: project-one
     spec:
       containers:
-        - image: public.ecr.aws/d0u4c9c7/node-app:latest
+        - name: project-one-container
+          image: gcr.io/project-1-400619/wed_proj_test:latest
           imagePullPolicy: Always
-          name: cicd-demo
           ports:
-            - containerPort: 3000
+            - containerPort: 7010
